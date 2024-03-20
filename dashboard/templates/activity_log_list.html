@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+    <div class="container">
+        <h1 class="mb-4">Activity Logs</h1>
+        <ul class="nav nav-tabs">
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'microservice_list' %}">Microservices</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link active" href="{% url 'service_dependency_list' %}">Services Relationship Manager</a>
+            </li>
+            {% if user.is_staff %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'user_list' %}">Users</a>
+                </li>
+            {% endif %}
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'activity_log_list' %}">Activity Logs</a>
+            </li>
+        </ul>
+    </div>
+    <table>
+        <thead>
+            <tr>
+                <th>Action</th>
+                <th>Timestamp</th>
+                <th>User</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for log in activity_logs %}
+                <tr>
+                    <td>{{ log.action }}</td>
+                    <td>{{ log.timestamp }}</td>
+                    <td>{{ log.user.username }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
+
+{% block styles %}
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+{% endblock %}

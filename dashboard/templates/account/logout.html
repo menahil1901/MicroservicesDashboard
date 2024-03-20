@@ -1,0 +1,12 @@
+<!-- templates/account/logout.html -->
+
+{% extends 'base.html' %}
+
+{% block title %}Logout{% endblock %}
+
+{% block content %}
+  <h2>Logout</h2>
+  <p>You have been successfully logged out.</p>
+    <a href="{% url 'account_login' %}">Login</a>
+    <a href="{% url 'account_signup' %}">Signup</a>
+{% endblock %}

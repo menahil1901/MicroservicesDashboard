@@ -1,0 +1,350 @@
+/* styles.css */
+
+/* Global styles */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f2f2f2;
+}
+
+#content {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Navigation links */
+a {
+    color: #007bff; /* Blue color for links */
+    text-decoration: none; /* Remove underlines from links */
+}
+
+a:hover {
+    text-decoration: underline; /* Add underline on hover */
+}
+
+/* Buttons */
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #007bff; /* Blue color for buttons */
+    color: #fff; /* White text color */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s; /* Smooth transition for background color */
+}
+
+.btn:hover {
+    background-color: #0056b3; /* Darker blue color on hover */
+}
+
+/* Tables */
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+th {
+    background-color: #f8f9fa; /* Light gray background for table headers */
+    font-weight: bold;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2; /* Alternate row color for better readability */
+}
+
+/* styles.css */
+
+
+.microservices-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.microservices-table th, .microservices-table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+.healthy-status {
+  color: green;
+}
+
+.warning-status {
+  color: orange;
+}
+
+.critical-status {
+  color: red;
+}
+
+.traffic-light {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  margin-right: 5px;
+}
+
+.healthy-status .traffic-light {
+  background-color: green;
+}
+
+.warning-status .traffic-light {
+  background-color: orange;
+}
+
+.critical-status .traffic-light {
+  background-color: red;
+}
+
+.nav-tabs {
+  list-style-type: none;
+  padding: 0;
+  margin: 20px 0;
+  display: flex;
+}
+
+.nav-tab {
+  margin-right: 20px;
+}
+
+/* styles.css */
+
+.delete-button {
+  background-color: #d9534f;
+  color: #fff;
+  padding: 10px;
+  border: none;
+  border-radius: 4px;
+}
+
+.cancel-link {
+  color: #337ab7;
+  text-decoration: none;
+}
+
+/* styles.css */
+
+.microservice-form {
+  color: #333;
+}
+
+.submit-button {
+  background-color: #007bff;
+  color: #fff;
+  padding: 10px;
+  border: none;
+  border-radius: 4px;
+}
+
+/* Add these styles to your existing CSS file or create a new one */
+
+.service-dependency-form {
+  margin-top: 20px;
+}
+
+.service-dependency-form label {
+  display: block;
+  margin-bottom: 10px;
+}
+
+.service-dependency-form input[type="text"],
+.service-dependency-form textarea {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.service-dependency-form .save-button {
+  background-color: #007bff;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.service-dependency-form .save-button:hover {
+    background-color: #007bff;
+}
+
+/* Custom CSS */
+.container {
+    margin-top: 50px;
+}
+
+.nav-tabs {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 10px;
+    border: 1px solid #dee2e6;
+    border-radius: 5px;
+    padding: 5px;
+    margin-bottom: 20px;
+    list-style: none;
+    padding-left: 0;
+}
+
+.nav-item {
+    margin: 0;
+}
+
+.nav-link {
+    color: #333;
+    text-align: center;
+    padding: 10px;
+    display: block;
+    border-right: 1px solid #dee2e6;
+}
+
+.nav-link.active {
+    font-weight: bold;
+    color: #007bff;
+}
+
+.nav-item:last-child .nav-link {
+    border-right: none;
+}
+
+.table-container {
+    margin-top: 20px;
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.table th,
+.table td {
+    border: 1px solid #dee2e6;
+    padding: 9px;
+    text-align: left;
+}
+
+.table th {
+    background-color: #f8f9fa;
+    font-weight: bold;
+}
+
+.table tbody tr:nth-of-type(odd) {
+    background-color: rgba(0, 123, 255, 0.1);
+}
+
+.btn-create {
+    margin-top: 20px;
+}
+
+.btn-create a {
+    color: #fff;
+    text-decoration: none;
+    padding: 10px 20px;
+    background-color: #007bff;
+    border: none;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.btn-create a:hover {
+    background-color: #0056b3;
+}
+
+.delete-button {
+    margin-left: 6px;
+    width: 60px;
+    height: 30px;
+    font-size: small;
+}
+
+.mr-1 {
+    margin-right: 6px;
+    width: 20px;
+    height: 10px;
+    font-size: small;
+}
+
+/* Custom CSS for User List */
+.container {
+    margin-top: 50px;
+}
+
+.table-container {
+    margin-top: 20px;
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+.table th,
+.table td {
+    border: 1px solid #dee2e6;
+    padding: 8px;
+    text-align: left;
+
+}
+
+.table th {
+    background-color: #f8f9fa;
+    font-weight: bold;
+}
+
+.table tbody tr:nth-of-type(odd) {
+    background-color: rgba(0, 123, 255, 0.1);
+}
+
+.btn-create {
+    margin-top: 20px;
+}
+
+.btn-create a {
+    color: #fff;
+    text-decoration: none;
+    padding: 10px 20px;
+    background-color: #007bff;
+    border: none;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.btn-create a:hover {
+    background-color: #0056b3;
+}
+
+.button-container {
+    display: inline-block; /* Ensures inline-block elements stay on the same line */
+}
+
+.delete-button {
+    margin-left: 6px;
+    width: 60px;
+    height: 30px;
+    font-size: small;
+}
+
+.mr-1 {
+    margin-right: 6px;
+    width: 20px;
+    height: 10px;
+    font-size: small;
+}
