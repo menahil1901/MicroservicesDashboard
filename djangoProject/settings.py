@@ -130,8 +130,9 @@ ACCOUNT_AUTHENTICATION_METHOD = 'username_email'
 ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_UNIQUE_EMAIL = True
 
+LOGIN_URL = 'account_login'
+LOGOUT_REDIRECT_URL = 'account_login'
 LOGIN_REDIRECT_URL = '/api/microservices/'
-LOGOUT_REDIRECT_URL = '/accounts/logout/'
 
 SITE_ID = 1  # Add this line if not present, it represents the ID of the site in the `django_site` table.
 

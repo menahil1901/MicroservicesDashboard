@@ -7,6 +7,7 @@ from .models import Microservice, ServiceDependency, ActivityLog
 from django.views import View
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth import logout
+from django.contrib.auth.views import LoginView, LogoutView
 from django.contrib.auth.models import User
 from django.contrib.auth.signals import user_logged_in
 from django.dispatch import receiver
@@ -250,7 +251,7 @@ def create_welcome_notification(sender, user, request, **kwargs):
     if WelcomeNotification.objects.filter(user=user).exists():
         return  # If the notification already exists, do nothing
 
-    message = "Navigation Successful!"
+    message = "Successful Access!"
     try:
         # Attempt to create a new WelcomeNotification
         WelcomeNotification.objects.create(user=user, message=message)

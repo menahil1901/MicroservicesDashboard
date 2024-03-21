@@ -1,7 +1,7 @@
 # dashboard/urls.py
 from django.urls import path
 from .views import DashboardView, MicroserviceListView, MicroserviceCreateView, MicroserviceUpdateView, \
-    MicroserviceDeleteView, LogoutView, ServiceDependencyListView, ServiceDependencyCreateView, \
+    MicroserviceDeleteView, LogoutView, LoginView, ServiceDependencyListView, ServiceDependencyCreateView, \
     ServiceDependencyUpdateView, ServiceDependencyDeleteView, UserListView, CreateUserView, \
     UpdateUserView, DeleteUserView, signup_view, ActivityLogListView, FeedbackView
 
@@ -22,5 +22,6 @@ urlpatterns = [
     path('users/<int:pk>/delete/', DeleteUserView.as_view(), name='delete_user'),
     path('activity-logs/', ActivityLogListView.as_view(), name='activity_log_list'),
     path('logout/', LogoutView.as_view(), name='account_logout'),
+    path('login/', LoginView.as_view(), name='account_login'),
     path('signup/', signup_view, name='signup'),
 ]
