@@ -27,7 +27,9 @@ SECRET_KEY = 'django-insecure-s7a$awrg0v%6js1*n%*p3!4f=1u^aw*jnn8di!*k$40lp5mc&i
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+# Add the domain name to ALLOWED_HOSTS
+ALLOWED_HOSTS = ['microservice-dashboard-5c7602fc2aee.herokuapp.com']
+
 
 
 # Application definition
