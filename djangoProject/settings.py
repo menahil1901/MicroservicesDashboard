@@ -153,3 +153,9 @@ SITE_ID = 1  # Add this line if not present, it represents the ID of the site in
 # settings.py
 
 # Set session cookie age to 0 seconds (expires immediately upon logout)
+
+# Define the directory where collectstatic will gather static files
+STATIC_ROOT = BASE_DIR / 'staticfiles'
+
+# Static files (CSS, JavaScript, Images)
+STATIC_URL = '/static/'
