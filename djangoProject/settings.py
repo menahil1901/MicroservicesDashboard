@@ -122,16 +122,9 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
-STATIC_URL = 'dashboard/static/'
-
-# Default primary key field type
-# https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
+STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-
-# settings.py
-
-# Other settings ...
 
 # Authentication settings
 ACCOUNT_EMAIL_VERIFICATION = 'none'
@@ -143,13 +136,4 @@ LOGIN_REDIRECT_URL = '/api/microservices/'
 LOGOUT_REDIRECT_URL = '/accounts/logout/'
 
 SITE_ID = 1  # Add this line if not present, it represents the ID of the site in the `django_site` table.
-# settings.py
 
-# Set session cookie age to 0 seconds (expires immediately upon logout)
-
-# Define the directory where collectstatic will gather static files
-# STATIC_ROOT = BASE_DIR / 'staticfiles'
-
-STATICFILES_DIRS = [
-    BASE_DIR / "dashboard/static",
-]
