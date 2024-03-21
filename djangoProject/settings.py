@@ -152,10 +152,13 @@ LOGOUT_REDIRECT_URL = '/accounts/logout/'
 SITE_ID = 1  # Add this line if not present, it represents the ID of the site in the `django_site` table.
 # settings.py
 
-# Set session cookie age to 0 seconds (expires immediately upon logout)
+# settings.py
+
+# Other settings ...
 
 # Define the directory where collectstatic will gather static files
 STATIC_ROOT = BASE_DIR / 'staticfiles'
 
 # Static files (CSS, JavaScript, Images)
+# https://docs.djangoproject.com/en/3.2/howto/static-files/
 STATIC_URL = '/static/'
