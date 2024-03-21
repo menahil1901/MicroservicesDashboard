@@ -17,7 +17,6 @@ import dashboard
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
@@ -28,12 +27,9 @@ SECRET_KEY = 'django-insecure-s7a$awrg0v%6js1*n%*p3!4f=1u^aw*jnn8di!*k$40lp5mc&i
 DEBUG = True
 
 # Add the domain name to ALLOWED_HOSTS
-ALLOWED_HOSTS = ['microservice-dashboard-5c7602fc2aee.herokuapp.com']
-
-
+ALLOWED_HOSTS = ['microservice-dashboard-5c7602fc2aee.herokuapp.com', '127.0.0.1']
 
 # Application definition
-
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -65,8 +61,7 @@ ROOT_URLCONF = 'djangoProject.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / 'templates']
-        ,
+        'DIRS': [BASE_DIR / 'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -80,8 +75,6 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'djangoProject.wsgi.application'
-
-
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
@@ -91,9 +84,6 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
-
-
-
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
 
@@ -129,11 +119,10 @@ USE_I18N = True
 
 USE_TZ = True
 
-
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
-STATIC_URL = 'static/'
+STATIC_URL = 'dashboard/static/'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
@@ -159,7 +148,8 @@ SITE_ID = 1  # Add this line if not present, it represents the ID of the site in
 # Set session cookie age to 0 seconds (expires immediately upon logout)
 
 # Define the directory where collectstatic will gather static files
-STATIC_ROOT = BASE_DIR / 'staticfiles'
+# STATIC_ROOT = BASE_DIR / 'staticfiles'
 
-# Static files (CSS, JavaScript, Images)
-STATIC_URL = '/static/'
+STATICFILES_DIRS = [
+    BASE_DIR / "dashboard/static",
+]
