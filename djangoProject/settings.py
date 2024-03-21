@@ -12,6 +12,8 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 
 from pathlib import Path
 
+import dashboard
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -38,10 +40,10 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
-    'dashboard',
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
+    'dashboard'
 
 ]
 
@@ -152,13 +154,10 @@ LOGOUT_REDIRECT_URL = '/accounts/logout/'
 SITE_ID = 1  # Add this line if not present, it represents the ID of the site in the `django_site` table.
 # settings.py
 
-# settings.py
-
-# Other settings ...
+# Set session cookie age to 0 seconds (expires immediately upon logout)
 
 # Define the directory where collectstatic will gather static files
 STATIC_ROOT = BASE_DIR / 'staticfiles'
 
 # Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/3.2/howto/static-files/
 STATIC_URL = '/static/'

@@ -20,7 +20,7 @@ from django.contrib import messages
 
 
 class DashboardView(LoginRequiredMixin, TemplateView):
-    template_name = 'dashboard.html'
+    template_name = 'templates/dashboard.html'
 
 
 class MicroserviceListView(LoginRequiredMixin, View):
@@ -39,21 +39,21 @@ class MicroserviceListView(LoginRequiredMixin, View):
 
 class MicroserviceCreateView(CreateView):
     model = Microservice
-    template_name = 'microservice_form.html'
+    template_name = 'templates/microservice_form.html'
     fields = '__all__'
     success_url = reverse_lazy('dashboard')
 
 
 class MicroserviceUpdateView(UpdateView):
     model = Microservice
-    template_name = 'microservice_form.html'
+    template_name = 'templates/microservice_form.html'
     fields = '__all__'
     success_url = reverse_lazy('dashboard')
 
 
 class MicroserviceDeleteView(DeleteView):
     model = Microservice
-    template_name = 'microservice_confirm_delete.html'
+    template_name = 'templates/microservice_confirm_delete.html'
     success_url = reverse_lazy('dashboard')
 
 
