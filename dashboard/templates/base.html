@@ -1,4 +1,6 @@
 {% load static %}
+  <!-- Load the messages template tags -->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,16 +13,14 @@
 <body>
 
 {% if user.is_authenticated %}
-  <!-- Display welcome notification if user is logged in -->
-  {% with welcome_notification=user.welcomenotification %}
-      {% if welcome_notification %}
-          <div id="notification" class="notification">
-              <span class="close" onclick="closeNotification()">&times;</span>
-              <p>{{ welcome_notification.message }}</p>
-          </div>
-      {% endif %}
-  {% endwith %}
+    {% if not request.session.welcome_notification_displayed %}
+        {% with welcome_notification=user.welcomenotification %}
+            {% if welcome_notification %}
+                <div class="notification" id="notification">Navigation Successful <span class="close">&times;</span></div>
 
+            {% endif %}
+        {% endwith %}
+    {% endif %}
   <!-- Display user greeting and logout link -->
   <p>Welcome, {{ user.username }}! (<a href="{% url 'account_logout' %}">Logout</a>)</p>
 {% else %}
@@ -28,16 +28,39 @@
   <p><a href="{% url 'account_login' %}">Login</a></p>
 {% endif %}
 
+<!-- Display Django messages -->
+{% if messages %}
+<div class="messages">
+    <ul>
+        {% for message in messages %}
+        <li>{{ message }}</li>
+        {% endfor %}
+    </ul>
+</div>
+{% endif %}
+
 <div id="content">
     {% block content %}{% endblock %}
 </div>
 
-<!-- JavaScript to handle closing of the notification -->
 <script>
-function closeNotification() {
+  function showNotification() {
+    var notification = document.getElementById("notification");
+    notification.style.display = "block";
+    setTimeout(function(){
+      closeNotification();
+    }, 450); // 3000 milliseconds = 3 seconds
+  }
+
+  function closeNotification() {
     var notification = document.getElementById("notification");
     notification.style.display = "none";
-}
+  }
+
+  // Call showNotification function when the page loads
+  window.onload = function() {
+    showNotification();
+  };
 </script>
 
 </body>

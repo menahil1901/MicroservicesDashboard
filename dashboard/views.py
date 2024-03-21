@@ -247,10 +247,15 @@ def signup_view(request):
 
 @receiver(user_logged_in)
 def create_welcome_notification(sender, user, request, **kwargs):
-    message = ("Welcome to the Microservice Dashboard!")
+    if WelcomeNotification.objects.filter(user=user).exists():
+        return  # If the notification already exists, do nothing
+
+    message = "Navigation Successful!"
     try:
         # Attempt to create a new WelcomeNotification
         WelcomeNotification.objects.create(user=user, message=message)
+        # Add a success message to be displayed to the user
+        messages.success(request, message)
     except IntegrityError:
-        # A WelcomeNotification already exists for this user, handle as needed
-        pass  # For now, just ignore the IntegrityError
+        # Handle IntegrityError if necessary
+        pass
