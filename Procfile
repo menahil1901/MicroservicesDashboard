@@ -1,1 +1,1 @@
-web: gunicorn dashboard --log-file -
+web: gunicorn MicroservicesDashboard --log-file -
