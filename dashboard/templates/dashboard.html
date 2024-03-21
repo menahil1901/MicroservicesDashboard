@@ -7,19 +7,20 @@
         <h1 class="mb-4">Microservices Dashboard</h1>
         <ul class="nav nav-tabs">
             <li class="nav-item">
-                <a class="nav-link" href="{% url 'microservice_list' %}">Microservices</a>
+                <a class="nav-link active" href="{% url 'microservice_list' %}">Microservices</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link active" href="{% url 'service_dependency_list' %}">Services Relationship Manager</a>
+                <a class="nav-link" href="{% url 'service_dependency_list' %}">Services Relationship Manager</a>
             </li>
-            {% if user.is_staff %}
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'user_list' %}">Users</a>
-                </li>
-            {% endif %}
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'user_list' %}">Users</a>
+            </li>
             <li class="nav-item">
                 <a class="nav-link" href="{% url 'activity_log_list' %}">Activity Logs</a>
             </li>
+             <li class="nav-item">
+                 <a class="nav-link" href="{% url 'feedback_form' %}">Feedback Form</a>
+             </li>
         </ul>
     </div>
   <table class="microservices-table">

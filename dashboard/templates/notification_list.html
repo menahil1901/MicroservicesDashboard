@@ -1,0 +1,31 @@
+<!-- notification_list.html -->
+
+{% extends 'base.html' %}
+{% block title %}Notifications{% endblock %}
+
+{% block content %}
+  <h1>Notifications</h1>
+  {% if notifications %}
+    <ul>
+      {% for notification in notifications %}
+        <li>
+          <strong>{{ notification.message }}</strong>
+          <br>
+          <small>{{ notification.timestamp }}</small>
+          {% if not notification.is_read %}
+            <span style="color: red;">(Unread)</span>
+          {% endif %}
+          {% if notification.notification_type == 'system_update' %}
+            <span style="color: blue;">(System Update)</span>
+          {% endif %}
+        </li>
+      {% endfor %}
+    </ul>
+    <form method="post" action="{% url 'mark_all_notifications_as_read' %}">
+      {% csrf_token %}
+      <input type="submit" value="Mark All as Read">
+    </form>
+  {% else %}
+    <p>No notifications to display.</p>
+  {% endif %}
+{% endblock %}

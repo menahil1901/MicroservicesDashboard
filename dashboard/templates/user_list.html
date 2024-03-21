@@ -23,6 +23,9 @@
             <li class="nav-item">
                 <a class="nav-link" href="{% url 'activity_log_list' %}">Activity Logs</a>
             </li>
+             <li class="nav-item">
+                <a class="nav-link" href="{% url 'feedback_form' %}">Feedback Form</a>
+            </li>
         </ul>
 
         {% if user.is_staff %}

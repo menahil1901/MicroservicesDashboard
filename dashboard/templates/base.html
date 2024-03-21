@@ -6,12 +6,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}Microservices Dashboard{% endblock %}</title>
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <link rel="stylesheet" href="{% static 'css/notification.css' %}">
 </head>
 <body>
 
 {% if user.is_authenticated %}
+  <!-- Display welcome notification if user is logged in -->
+  {% with welcome_notification=user.welcomenotification %}
+      {% if welcome_notification %}
+          <div id="notification" class="notification">
+              <span class="close" onclick="closeNotification()">&times;</span>
+              <p>{{ welcome_notification.message }}</p>
+          </div>
+      {% endif %}
+  {% endwith %}
+
+  <!-- Display user greeting and logout link -->
   <p>Welcome, {{ user.username }}! (<a href="{% url 'account_logout' %}">Logout</a>)</p>
 {% else %}
+  <!-- Display login link if user is not logged in -->
   <p><a href="{% url 'account_login' %}">Login</a></p>
 {% endif %}
 
@@ -19,12 +32,13 @@
     {% block content %}{% endblock %}
 </div>
 
-{% if messages %}
-  <ul class="messages">
-    {% for message in messages %}
-      <li>{{ message }}</li>
-    {% endfor %}
-  </ul>
-{% endif %}
+<!-- JavaScript to handle closing of the notification -->
+<script>
+function closeNotification() {
+    var notification = document.getElementById("notification");
+    notification.style.display = "none";
+}
+</script>
+
 </body>
 </html>

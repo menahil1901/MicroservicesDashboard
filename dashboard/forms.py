@@ -4,6 +4,8 @@ from django.contrib.auth.models import User  # Import the default User model
 
 from dashboard.models import ServiceDependency
 
+class FeedbackForm(forms.Form):
+    feedback = forms.CharField(widget=forms.Textarea(attrs={'rows': 4, 'cols': 50}))
 
 class ServiceDependencyForm(forms.ModelForm):
     class Meta:

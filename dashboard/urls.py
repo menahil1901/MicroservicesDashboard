@@ -3,10 +3,11 @@ from django.urls import path
 from .views import DashboardView, MicroserviceListView, MicroserviceCreateView, MicroserviceUpdateView, \
     MicroserviceDeleteView, LogoutView, ServiceDependencyListView, ServiceDependencyCreateView, \
     ServiceDependencyUpdateView, ServiceDependencyDeleteView, UserListView, CreateUserView, \
-    UpdateUserView, DeleteUserView, signup_view, ActivityLogListView
+    UpdateUserView, DeleteUserView, signup_view, ActivityLogListView, FeedbackView
 
 urlpatterns = [
     path('', DashboardView.as_view(), name='dashboard'),
+    path('feedback/', FeedbackView.as_view(), name='feedback_form'),
     path('microservices/', MicroserviceListView.as_view(), name='microservice_list'),
     path('microservices/create/', MicroserviceCreateView.as_view(), name='microservice_create'),
     path('microservices/update/<int:pk>/', MicroserviceUpdateView.as_view(), name='microservice_update'),

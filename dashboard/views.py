@@ -8,8 +8,11 @@ from django.views import View
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth import logout
 from django.contrib.auth.models import User
-from django.db import models
-from .forms import ServiceDependencyForm, CustomUserCreationForm, UserForm
+from django.contrib.auth.signals import user_logged_in
+from django.dispatch import receiver
+from django.db import models, IntegrityError
+from .models import WelcomeNotification
+from .forms import ServiceDependencyForm, CustomUserCreationForm, UserForm, FeedbackForm
 from django.contrib.auth import login
 from django.contrib import messages
 
@@ -186,10 +189,16 @@ class UserListView(View):
         context = {'users': users, 'success_message': messages.get_messages(request)}
         return render(request, self.template_name, context)
 
-class ActivityLogListView(ListView):
+class ActivityLogListView(LoginRequiredMixin, ListView):
     model = ActivityLog
     template_name = 'activity_log_list.html'
     context_object_name = 'activity_logs'
+    login_url = 'account_login'  # Assuming this is your login URL
+
+    def dispatch(self, request, *args, **kwargs):
+        if not request.user.is_staff:
+            return HttpResponseForbidden("You don't have permission to access this page.")
+        return super().dispatch(request, *args, **kwargs)
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -197,12 +206,27 @@ class ActivityLogListView(ListView):
         print("Activity Logs:", activity_logs)  # Print activity logs for debugging
         context['activity_logs'] = activity_logs
         return context
+
 class LogoutView(View):
     def get(self, request):
         logout(request)
         return redirect('account_login')
 
+class FeedbackView(View):
+    template_name = 'feedback_form.html'
 
+    def get(self, request):
+        form = FeedbackForm()
+        return render(request, self.template_name, {'form': form})
+
+    def post(self, request):
+        form = FeedbackForm(request.POST)
+        if form.is_valid():
+            feedback = form.cleaned_data['feedback']
+            # Process the feedback (e.g., save to database)
+            confirmation_message = "Thank you for your feedback! We will Aim to get back to you as soon as possible"
+            return render(request, self.template_name, {'form': form, 'confirmation_message': confirmation_message})
+        return render(request, self.template_name, {'form': form})
 
 def signup_view(request):
     if request.method == 'POST':
@@ -220,3 +244,13 @@ def signup_view(request):
     else:
         form = CustomUserCreationForm()
     return render(request, 'signup.html', {'form': form})
+
+@receiver(user_logged_in)
+def create_welcome_notification(sender, user, request, **kwargs):
+    message = ("Welcome to the Microservice Dashboard!")
+    try:
+        # Attempt to create a new WelcomeNotification
+        WelcomeNotification.objects.create(user=user, message=message)
+    except IntegrityError:
+        # A WelcomeNotification already exists for this user, handle as needed
+        pass  # For now, just ignore the IntegrityError

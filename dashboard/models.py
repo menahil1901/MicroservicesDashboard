@@ -3,6 +3,7 @@ import uuid
 from django.db import models
 from django.contrib.auth.models import User  # Import the default User model
 
+
 class Microservice(models.Model):
     name = models.CharField(max_length=100)
     status = models.CharField(max_length=20)
@@ -36,4 +37,6 @@ class ActivityLog(models.Model):
     def __str__(self):
         return f'{self.action} by {self.user.username} at {self.timestamp}'
 
-
+class WelcomeNotification(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    message = models.TextField()

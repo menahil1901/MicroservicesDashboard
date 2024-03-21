@@ -1,0 +1,43 @@
+<!-- feedback_form.html -->
+{% extends 'base.html' %}
+{% load static %}
+
+
+
+{% block styles %}
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="container">
+<h1 class="mb-4">Feedback Form</h1>
+        <ul class="nav nav-tabs">
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'microservice_list' %}">Microservices</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'service_dependency_list' %}">Services Relationship Manager</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'user_list' %}">Users</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'activity_log_list' %}">Activity Logs</a>
+            </li>
+             <li class="nav-item">
+                 <a class="nav-link active" href="{% url 'feedback_form' %}">Feedback Form</a>
+             </li>
+        </ul>
+    </div>
+
+    {% if confirmation_message %}
+        <p>{{ confirmation_message }}</p>
+    {% else %}
+        <form method="post">
+            {% csrf_token %}
+            <label for="feedback">Your Feedback:</label><br>
+            <textarea id="feedback" name="feedback" rows="4" cols="50"></textarea><br><br>
+            <input type="submit" value="Submit">
+        </form>
+    {% endif %}
+{% endblock %}
