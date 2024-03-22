@@ -19,4 +19,4 @@ Follow these steps to set up the project locally:
 Testing
 
 1. Run unit tests: ```python manage.py test```
-2, Run security tests: bandit ```-r``` . (for static analysis), ```zap-full-scan.py```(for dynamic scanning with OWASP ZAP)
+2. Run security tests: bandit ```-r``` . (for static analysis), ```zap-full-scan.py```(for dynamic scanning with OWASP ZAP)
