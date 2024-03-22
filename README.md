@@ -10,7 +10,7 @@ The Microservice Dashboard Application is designed to enhance operational effici
 
 Follow these steps to set up the project locally:
 
-1. Clone the repository: ```git clone https://github.com/menahil1901/MicroserviceDashboard.git```
+1. Clone the repository: ```git clone https://github.com/menahil1901/MicroservicesDashboard.git```
 2. Install dependencies: ```pip install -r requirements.txt```
 3. Set up environment variables for configuration (e.g., database credentials, secret keys).
 4. Run migrations: ```python manage.py migrate```
