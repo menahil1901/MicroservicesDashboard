@@ -42,6 +42,7 @@ ALLOWED_HOSTS = ['microservice-dashboard-5c7602fc2aee.herokuapp.com', '127.0.0.1
 
 # Application definition
 INSTALLED_APPS = [
+    'dashboard',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -52,7 +53,6 @@ INSTALLED_APPS = [
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
-    'dashboard',
 ]
 
 MIDDLEWARE = [
