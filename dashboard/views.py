@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect, get_object_or_404
+from django.core.paginator import Paginator
 from django.views.generic import TemplateView, ListView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy
@@ -190,23 +191,30 @@ class UserListView(View):
         context = {'users': users, 'success_message': messages.get_messages(request)}
         return render(request, self.template_name, context)
 
+
 class ActivityLogListView(LoginRequiredMixin, ListView):
     model = ActivityLog
     template_name = 'activity_log_list.html'
     context_object_name = 'activity_logs'
     login_url = 'account_login'  # Assuming this is your login URL
+    paginate_by = 10  # Number of items per page
 
     def dispatch(self, request, *args, **kwargs):
         if not request.user.is_staff:
             return HttpResponseForbidden("You don't have permission to access this page.")
         return super().dispatch(request, *args, **kwargs)
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        activity_logs = ActivityLog.objects.all()  # Query all activity logs
-        print("Activity Logs:", activity_logs)  # Print activity logs for debugging
-        context['activity_logs'] = activity_logs
-        return context
+    def get_queryset(self):
+        return ActivityLog.objects.all().order_by('-timestamp')
+
+class LoginView(View):
+    template_name = 'login.html'  # Specify your custom login template
+    def form_valid(self, form):
+        # Add custom logic if needed
+        return super().form_valid(form)
+    def get_success_url(self):
+        # Customize the redirect URL after successful login
+        return 'dashboard.html'
 
 class LogoutView(View):
     def get(self, request):
@@ -215,6 +223,7 @@ class LogoutView(View):
         request.session.flush()
         print("User logged out successfully.")
         return redirect('account_login')
+
 class FeedbackView(View):
     template_name = 'feedback_form.html'
 

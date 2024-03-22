@@ -34,14 +34,15 @@ class ActivityLog(models.Model):
         ('LOGIN', 'Login'),
         ('LOGOUT', 'Logout'),
     ]
-
-    action = models.CharField(max_length=10, choices=ACTION_CHOICES)
+    action = models.CharField(max_length=6, choices=ACTION_CHOICES)
     timestamp = models.DateTimeField(auto_now_add=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
+    class Meta:
+        db_table = 'dashboard_activitylog'
+
 
     def __str__(self):
         return f'{self.action} by {self.user.username} at {self.timestamp}'
-
 
 class WelcomeNotification(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)

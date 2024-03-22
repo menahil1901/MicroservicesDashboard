@@ -6,5 +6,5 @@ class DashboardConfig(AppConfig):
     name = 'dashboard'
 
     def ready(self):
-        pass
+        import dashboard.signals # noqa: F401
 

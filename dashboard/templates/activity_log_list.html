@@ -10,7 +10,7 @@
                 <a class="nav-link" href="{% url 'microservice_list' %}">Microservices</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link active" href="{% url 'service_dependency_list' %}">Services Relationship Manager</a>
+                <a class="nav-link" href="{% url 'service_dependency_list' %}">Services Relationship Manager</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="{% url 'user_list' %}">Users</a>
@@ -41,6 +41,23 @@
             {% endfor %}
         </tbody>
     </table>
+
+    {% if is_paginated %}
+    <div class="pagination">
+        {% if page_obj.has_previous %}
+        <a href="?page=1">First</a>
+        <a href="?page={{ page_obj.previous_page_number }}">Previous</a>
+        {% endif %}
+
+        <span class="current">Page {{ page_obj.number }} of {{ paginator.num_pages }}</span>
+
+        {% if page_obj.has_next %}
+        <a href="?page={{ page_obj.next_page_number }}">Next</a>
+        <a href="?page={{ paginator.num_pages }}">Last</a>
+        {% endif %}
+    </div>
+    {% endif %}
+
 {% endblock %}
 
 {% block styles %}
