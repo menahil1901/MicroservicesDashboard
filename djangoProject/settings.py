@@ -38,7 +38,7 @@ SECRET_KEY = 'django-insecure-s7a$awrg0v%6js1*n%*p3!4f=1u^aw*jnn8di!*k$40lp5mc&i
 DEBUG = True
 
 # Add the domain name to ALLOWED_HOSTS
-ALLOWED_HOSTS = ['microservice-dashboard-5c7602fc2aee.herokuapp.com', '127.0.0.1']
+ALLOWED_HOSTS = ['microservice-dashboard-5c7602fc2aee.herokuapp.com', '127.0.0.1', 'microservicedashboard-b5d5f2ef2baf.herokuapp.com']
 
 # Application definition
 INSTALLED_APPS = [
