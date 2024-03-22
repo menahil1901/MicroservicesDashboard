@@ -18,7 +18,7 @@ mimetypes.add_type("text/css", ".css", True)
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-STATIC_URL = 'dashboard/static/'
+STATIC_URL = '/static/'
 
 # Add the directory containing your 'dashboard' app's static files to STATICFILES_DIRS
 STATICFILES_DIRS = [
