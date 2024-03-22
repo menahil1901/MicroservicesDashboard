@@ -5,7 +5,7 @@ from .models import ActivityLog
 @receiver(user_logged_in)
 def log_user_login(sender, request, user, **kwargs):
     # Check if the login was through your custom login URL
-    if request.resolver_match.url_name == 'account_login':
+    if request.resolver_match is not None and request.resolver_match.url_name == 'account_login':
         ActivityLog.objects.create(user=user, action='LOGIN')
 
 @receiver(user_logged_out)
