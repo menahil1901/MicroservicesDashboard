@@ -17,11 +17,16 @@ mimetypes.add_type("text/css", ".css", True)
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+
 STATIC_URL = 'dashboard/static/'
 
+# Add the directory containing your 'dashboard' app's static files to STATICFILES_DIRS
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'dashboard', 'static'),
 ]
+
+# Define the directory where static files will be collected during deployment
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
@@ -37,6 +42,7 @@ ALLOWED_HOSTS = ['microservice-dashboard-5c7602fc2aee.herokuapp.com', '127.0.0.1
 
 # Application definition
 INSTALLED_APPS = [
+    'dashboard',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -47,7 +53,6 @@ INSTALLED_APPS = [
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
-    'dashboard'
 ]
 
 MIDDLEWARE = [
