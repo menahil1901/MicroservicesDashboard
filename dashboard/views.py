@@ -210,9 +210,11 @@ class ActivityLogListView(LoginRequiredMixin, ListView):
 
 class LogoutView(View):
     def get(self, request):
+        print("Logging out user...")
         logout(request)
+        request.session.flush()
+        print("User logged out successfully.")
         return redirect('account_login')
-
 class FeedbackView(View):
     template_name = 'feedback_form.html'
 

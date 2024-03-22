@@ -42,7 +42,6 @@ ALLOWED_HOSTS = ['microservice-dashboard-5c7602fc2aee.herokuapp.com', '127.0.0.1
 
 # Application definition
 INSTALLED_APPS = [
-    'dashboard',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -53,6 +52,7 @@ INSTALLED_APPS = [
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
+    'dashboard',
 ]
 
 MIDDLEWARE = [
@@ -147,4 +147,6 @@ LOGOUT_REDIRECT_URL = 'account_login'
 LOGIN_REDIRECT_URL = '/api/microservices/'
 
 SITE_ID = 1  # Add this line if not present, it represents the ID of the site in the `django_site` table.
+
+SESSION_EXPIRE_AT_BROWSER_CLOSE = True
 
